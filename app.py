@@ -10,12 +10,10 @@ df = pd.read_csv(url)
 df = df.dropna()
 # on-hot encoding 
 df = pd.get_dummies(df, drop_first=True)
-
 # feature selection
 
 X = df.drop('BASEL_temp_mean', axis = 1)
 y = df['BASEL_temp_mean']
-
 # split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -36,8 +34,9 @@ r2 = r2_score(y_test, y_pred)
 print(f'R-Squared Score {r2}')
 
 # visualise the results 
-plt.scatter(y_test, y_pred)
-plt.xlabel('Actual Values')
-plt.ylabel('Predicted Values')
-plt.title('Actual vs. Predicted Weather Conditions')
-plt.show()
+# plt.scatter(y_test, y_pred)
+# plt.xlabel('Actual Values')
+# plt.ylabel('Predicted Values')
+# plt.title('Actual vs. Predicted Weather Conditions')
+# plt.show()
+
