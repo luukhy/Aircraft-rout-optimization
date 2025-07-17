@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
+from modules.my_linear_regression import MyLinearRegression
 
 url = "https://zenodo.org/records/4770937/files/weather_prediction_dataset.csv"
 df = pd.read_csv(url)
@@ -33,10 +34,21 @@ print(f'Mean Squared Error: {mse}')
 r2 = r2_score(y_test, y_pred)
 print(f'R-Squared Score {r2}')
 
+my_model = MyLinearRegression()
+my_model.Fit(X_train, y_train)
+y_pred = my_model.Predict(X_test)
+
+mse = mean_squared_error(y_test, y_pred)
+print(f'My mean Squared Error: {mse}')
+
+# calculate r-squared score 
+r2 = r2_score(y_test, y_pred)
+print(f'My R-Squared Score {r2}')
+
 # visualise the results 
-# plt.scatter(y_test, y_pred)
-# plt.xlabel('Actual Values')
-# plt.ylabel('Predicted Values')
-# plt.title('Actual vs. Predicted Weather Conditions')
-# plt.show()
+plt.scatter(y_test, y_pred)
+plt.xlabel('Actual Values')
+plt.ylabel('Predicted Values')
+plt.title('Actual vs. Predicted Weather Conditions')
+plt.show()
 

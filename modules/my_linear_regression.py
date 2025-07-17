@@ -31,7 +31,6 @@ class MyLinearRegression:
 
     def Predict(self, test_features):
         X_hat = np.c_[np.ones(len(test_features)), test_features.to_numpy()]
-        print(X_hat)
         return np.dot(X_hat, self.beta_matrix)
 
 
@@ -45,7 +44,7 @@ if __name__ == "__main__":
     df = pd.read_csv("../data/MultipleLR_data.csv", sep=";")
     X = df.drop("Satisfaction", axis=1)    
     y = df.Satisfaction
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)    
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)    
     
     start_time = time.time()
     my_model.Fit(X_train, y_train)
@@ -73,4 +72,3 @@ if __name__ == "__main__":
     plt.scatter(range(0, len(y_test)), y_test, color = "red")
     plt.show()
     # calculate r-squared score 
-
